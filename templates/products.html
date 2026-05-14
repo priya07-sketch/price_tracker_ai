@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - Price Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .product-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .product-card h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 16px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #27ae60;
+            margin: 10px 0;
+        }
+        
+        .product-records {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .no-products {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+        
+        .btn-view {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .btn-view:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 Tracked Products</h1>
+        
+        {% if products %}
+            <p style="color: #666;">Total products: {{ products | length }}</p>
+            <div class="products-grid">
+                {% for product in products %}
+                    <div class="product-card">
+                        <h3 title="{{ product.name }}">{{ product.name }}</h3>
+                        <div class="product-price">
+                            {% if product.price %}
+                                ₹{{ "%.2f"|format(product.price) }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </div>
+                        <div class="product-records">
+                            📊 {{ product.records }} price record{{ 's' if product.records != 1 else '' }}
+                        </div>
+                        <a href="{{ url_for('dashboard', product=product.name) }}" class="btn-view">View Dashboard →</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-products">
+                <h2>📭 No products tracked yet</h2>
+                <p>Start by scraping a product URL from the home page!</p>
+                <a href="/" class="btn btn-back">← Back to Home</a>
+            </div>
+        {% endif %}
+        
+        <div style="margin-top: 30px;">
+            <a href="/" class="btn btn-back">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

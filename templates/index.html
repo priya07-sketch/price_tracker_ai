@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Tracker AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>💰 Price Tracker AI</h1>
+        <p>Track product prices and predict future trends</p>
+        
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+        
+        <form method="POST" class="form">
+            <input 
+                type="text" 
+                name="url" 
+                placeholder="Enter product URL (e.g., Amazon link)" 
+                required
+                class="input-field"
+            >
+            <button type="submit" class="btn">Track Price</button>
+        </form>
+        
+        <div style="text-align: center; margin: 20px 0; color: #666; font-size: 0.9em;">
+            <p>💡 <strong>Supported websites:</strong> Amazon, general e-commerce sites with standard HTML structure</p>
+            <p>If scraping fails, try copying the direct product page URL</p>
+        </div>
+        
+        <hr>
+        
+        <h2>View Price History</h2>
+        <form method="POST" action="/dashboard" class="form">
+            <input 
+                type="text" 
+                name="product" 
+                placeholder="Enter product name" 
+                required
+                class="input-field"
+            >
+            <button type="submit" class="btn">View Dashboard</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <p><a href="/products" style="color: #3498db; text-decoration: none; font-weight: bold;">📦 View All Tracked Products →</a></p>
+        </div>
+    </div>
+</body>
+</html>

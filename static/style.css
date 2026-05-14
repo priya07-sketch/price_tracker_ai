@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #667eea;
+    margin: 20px 0 15px 0;
+}
+
+h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn {
+    padding: 12px 25px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #764ba2;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-left: 4px solid #2e7d32;
+}
+
+.message.error {
+    background: #ffebee;
+    color: #c62828;
+    border-left-color: #c62828;
+}
+
+hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 2px solid #eee;
+}
+
+.dashboard {
+    text-align: center;
+}
+
+.graph-section {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.graph {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.no-data {
+    font-size: 1.2em;
+    color: #666;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 2px dashed #ddd;
+}
+
+.prediction-box {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #667eea;
+}
+
+.prediction-box p {
+    text-align: left;
+    font-size: 1.1em;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .form {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

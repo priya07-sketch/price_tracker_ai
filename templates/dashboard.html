@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Dashboard - {{ product }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Price Dashboard</h1>
+        
+        <div class="dashboard">
+            <h2>{{ product }}</h2>
+            
+            <div class="graph-section">
+                {% if graph %}
+                <img src="{{ url_for('static', filename='graph.png') }}?t={{ range(1, 1000) | random }}" alt="Price Graph" class="graph">
+                {% else %}
+                <p class="no-data">No price data available for this product yet.</p>
+                {% endif %}
+            </div>
+            
+            <div class="prediction-box">
+                <h3>📈 Price Prediction</h3>
+                <p>{{ prediction }}</p>
+            </div>
+            
+            <a href="/" class="btn btn-back">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
